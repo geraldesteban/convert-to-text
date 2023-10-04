@@ -7,36 +7,31 @@
 .bold {
   font-weight: bold;
 }
-
-.container {
-}
-
+/* Change UI (IMAGE, VOICE, VIDEO */
 .change-ui {
-  font-size: 2rem;
-  text-align: center;
-  margin: 5rem 0rem;
+  margin: 2rem 0rem;
   display: flex;
   justify-content: space-around;
 }
 
-.change-image {
+.pointer {
+  font-size: 2rem;
+  text-align: center;
   cursor: pointer;
 }
 
-.change-video {
-  cursor: pointer;
-}
 .converter {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5rem auto;
+  margin: 0rem auto;
 }
 
+/* Image and Video Style */
 .title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
-  padding: 1rem 0rem;
+  padding: 0.5rem 0rem;
 }
 
 .root {
@@ -47,20 +42,6 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #000000;
-  margin-bottom: 1rem;
-  padding: 1rem;
-}
-
-#sep {
-  width: 16px;
-}
-
-.convert-messages {
-  width: 60rem;
-  height: 10rem;
-  margin: 0rem auto;
-  border: 1px solid #000000;
-  overflow: auto;
   margin-bottom: 1rem;
   padding: 1rem;
 }
@@ -83,6 +64,16 @@
   cursor: pointer;
 }
 
+.convert-messages {
+  width: 60rem;
+  height: 10rem;
+  margin: 0rem auto;
+  border: 1px solid #000000;
+  overflow: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
 .convert-text {
   width: 60rem;
   height: 10rem;
@@ -90,4 +81,17 @@
   border: 1px solid #000000;
   overflow: auto;
   padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Voice, Audio Style */
+.convert-btns {
+  margin: 1rem 0rem;
+  text-align: center;
+}
+
+.convert-btn {
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
 }

@@ -9,8 +9,9 @@
   <body>
     <div class="container">
       <div class="change-ui">
-        <h2 class="change-image">Image</h2>
-        <h2 class="change-video">Video</h2>
+        <h2 class="change-image pointer">Image</h2>
+        <h2 class="change-voice pointer">Voice</h2>
+        <h2 class="change-video pointer">Video</h2>
       </div>
       <div class="converter">
         <!-- Image Conversion Section -->
@@ -19,10 +20,8 @@
           <div class="convert-image-root root" id="image-root">
             <div class="upload-div upload">
               <label class="upload-text text" for="image-upload"
-                >UPLOAD AN IMAGE:</label
+                >Upload a Image:</label
               >
-              <button id="autocorrect-button">Autocorrect Spelling</button>
-
               <input
                 class="upload-file file"
                 type="file"
@@ -42,7 +41,7 @@
           <div class="convert-video-root root" id="video-root">
             <div class="upload-div upload">
               <label class="upload-text text" for="video-upload"
-                >UPLOAD A VIDEO:</label
+                >Upload a Video:</label
               >
               <input
                 class="upload-file file"
@@ -57,6 +56,20 @@
           </div>
           <div class="convert-text" id="video-converted-text">
             <b>Finished converted text will display here.</b>
+          </div>
+        </div>
+        <!-- Voice, Audio Conversion Section -->
+        <div class="convert-voice">
+          <div class="convert-btns">
+            <button class="convert-btn" id="startButton">
+              Start Listening
+            </button>
+            <button class="convert-btn" id="stopButton" style="display: none">
+              Stop Listening
+            </button>
+          </div>
+          <div class="convert-text">
+            <p id="transcript"><b>Voice text will display here.</b></p>
           </div>
         </div>
       </div>

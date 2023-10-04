@@ -4,20 +4,31 @@
 $(document).ready(function () {
   const changeImage = $(".change-image");
   const changeVideo = $(".change-video");
+  const changeVoice = $(".change-voice");
   const convertVideo = $(".convert-video");
   const convertImage = $(".convert-image");
+  const convertVoice = $(".convert-voice");
 
   convertVideo.hide();
   convertImage.show();
+  convertVoice.hide();
+
+  changeImage.click(function () {
+    convertImage.show();
+    convertVideo.hide();
+    convertVoice.hide();
+  });
 
   changeVideo.click(function () {
     convertVideo.show();
     convertImage.hide();
+    convertVoice.hide();
   });
 
-  changeImage.click(function () {
+  changeVoice.click(function () {
+    convertVoice.show();
+    convertImage.hide();
     convertVideo.hide();
-    convertImage.show();
   });
 });
 
@@ -149,4 +160,64 @@ $(document).ready(function () {
       scheduler.addWorker(worker);
     }
   })();
+});
+
+/* Voice to Text Converter Functionality */
+
+$(document).ready(function () {
+  let recognition;
+
+  // Check if the browser supports the Web Speech API
+  if ("webkitSpeechRecognition" in window) {
+    recognition = new webkitSpeechRecognition();
+    const startButton = $("#startButton");
+    const stopButton = $("#stopButton");
+    const transcriptElement = $("#transcript");
+
+    // Set the recognition language (optional)
+    recognition.lang = "en-US";
+
+    // When speech recognition is successful, this event is triggered
+    recognition.onresult = function (event) {
+      const transcript = event.results[0][0].transcript.toLowerCase();
+      transcriptElement.text("Voice text: " + transcript);
+
+      // Check for specific keywords and perform actions
+      if (transcript.includes("youtube")) {
+        window.open("https://www.youtube.com", "_blank");
+      } else if (transcript.includes("wikipedia")) {
+        window.open("https://www.wikipedia.org", "_blank");
+      } else if (transcript.includes("google")) {
+        window.open("https://www.google.com", "_blank");
+      } else if (transcript.includes("stackoverflow")) {
+        window.open("https://stackoverflow.com", "_blank");
+      } else if (transcript.includes("gpt")) {
+        window.open("https://chat.openai.com/", "_blank");
+      } else if (transcript.includes("ms teams")) {
+        window.open("https://teams.microsoft.com/", "_blank");
+      }
+      // Add more keywords and actions as needed
+    };
+
+    // When an error occurs, this event is triggered
+    recognition.onerror = function (event) {
+      console.error("Speech recognition error:", event.error);
+    };
+
+    // Start listening when the "Start Listening" button is clicked
+    startButton.on("click", function () {
+      recognition.start();
+      startButton.prop("disabled", true);
+      stopButton.css("display", "inline-block");
+    });
+
+    // Stop listening when the "Stop Listening" button is clicked
+    stopButton.on("click", function () {
+      recognition.stop();
+      startButton.prop("disabled", false);
+      stopButton.css("display", "none");
+    });
+  } else {
+    console.error("Web Speech API is not supported in this browser");
+  }
 });
