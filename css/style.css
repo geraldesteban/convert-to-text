@@ -35,8 +35,8 @@
 }
 
 .root {
-  width: 60rem;
-  height: 21rem;
+  width: 50rem;
+  height: 15rem;
   margin: 0rem auto;
   display: flex;
   justify-content: center;
@@ -65,7 +65,7 @@
 }
 
 .convert-messages {
-  width: 60rem;
+  width: 50rem;
   height: 10rem;
   margin: 0rem auto;
   border: 1px solid #000000;
@@ -75,7 +75,7 @@
 }
 
 .convert-text {
-  width: 60rem;
+  width: 50rem;
   height: 10rem;
   margin: 0rem auto;
   border: 1px solid #000000;
