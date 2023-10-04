@@ -1,12 +1,87 @@
 "use strict";
 
+/* Change UI */
+const changeImage = document.querySelector(".change-image");
+const changeVideo = document.querySelector(".change-video");
+const convertVideo = document.querySelector(".convert-video");
+const convertImage = document.querySelector(".convert-image");
+
+convertVideo.style.display = "none";
+convertImage.style.display = "block";
+
+changeVideo.addEventListener("click", () => {
+  convertVideo.style.display = "block";
+  convertImage.style.display = "none";
+});
+
+changeImage.addEventListener("click", () => {
+  convertVideo.style.display = "none";
+  convertImage.style.display = "block";
+});
+
+/* Image to Text Converter Functionality */
+const imageUpload = document.getElementById("image-upload");
+const imageConvertedText = document.getElementById("image-converted-text");
+
+const doImageOCR = async () => {
+  const file = imageUpload.files[0];
+  if (file) {
+    try {
+      const objectURL = URL.createObjectURL(file);
+      const img = new Image();
+
+      // Set the width and height of the image to match the video dimensions.
+      img.width = 640;
+      img.height = 360;
+
+      img.src = objectURL;
+      img.crossOrigin = "anonymous";
+
+      // Remove the previously displayed image and clear the converted text.
+      while (imageConvertedText.firstChild) {
+        imageConvertedText.removeChild(imageConvertedText.firstChild);
+      }
+
+      img.addEventListener("load", async () => {
+        try {
+          // Use Tesseract.js to perform OCR on the loaded image.
+          const {
+            data: { text },
+          } = await Tesseract.recognize(img);
+
+          // Display the converted text in the "image-converted-text" element.
+          imageConvertedText.innerHTML = `<b>${text}</b>`;
+        } catch (error) {
+          console.error(error);
+        }
+      });
+
+      // Remove the previously displayed image.
+      const previousImage = document
+        .getElementById("image-root")
+        .querySelector("img");
+      if (previousImage) {
+        previousImage.remove();
+      }
+
+      document.getElementById("image-root").appendChild(img);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+};
+
+imageUpload.addEventListener("change", doImageOCR);
+
+/* Video to Text Converter Functionality */
 const { createWorker, createScheduler } = Tesseract;
 const scheduler = createScheduler();
-const messages = document.getElementById("messages");
+const messages = document.getElementById("video-messages");
 const videoUpload = document.getElementById("video-upload");
-const convertedText = document.getElementById("converted-text");
+const convertedText = document.getElementById("video-converted-text");
 let timerId = null;
 let videoText = ""; // Store the text from the video.
+let currentVideoElement = null; // Track the currently displayed video element.
 
 const addMessage = (m, bold) => {
   let msg = `<p>${m}</p>`;
@@ -18,10 +93,16 @@ const addMessage = (m, bold) => {
 };
 
 const doOCR = async () => {
+  // Check if there is a currently displayed video element and remove it.
+  if (currentVideoElement) {
+    currentVideoElement.remove();
+  }
+
   const video = document.createElement("video");
   video.width = 640;
   video.height = 360;
   video.crossOrigin = "anonymous";
+  video.autoplay = true; // Add autoplay attribute.
 
   const c = document.createElement("canvas");
   c.width = video.width;
@@ -32,6 +113,7 @@ const doOCR = async () => {
     const objectURL = URL.createObjectURL(file);
     video.src = objectURL;
     video.controls = true;
+    currentVideoElement = video; // Set the current video element.
 
     video.addEventListener("play", () => {
       timerId = setInterval(async () => {
@@ -57,11 +139,11 @@ const doOCR = async () => {
       // Set the text from the video in the converted-text div.
       convertedText.textContent = videoText;
 
-      addMessage("Video processing complete.");
+      addMessage("Video processing complete.", true); // Display this message in bold.
     });
 
-    document.getElementById("root").appendChild(video);
-    addMessage("Video uploaded. You can now play the video.");
+    document.getElementById("video-root").appendChild(video); // Use the correct container ID
+    addMessage("Video uploaded. You can now play the video.", true); // Display this message in bold.
   }
 };
 

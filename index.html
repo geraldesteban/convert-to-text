@@ -2,29 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Tesseract.js Video Streaming Recognition</title>
+    <title>Text Conversion</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://unpkg.com/tesseract.js@v2.0.0-beta.1/dist/tesseract.min.js"></script>
+    <script src="https://unpkg.com/tesseract.js@2.0.0-beta.1/dist/tesseract.min.js"></script>
   </head>
   <body>
-    <div id="root">
-      <div class="upload-div">
-        <label class="upload-text" for="video-upload">Upload a video:</label>
-        <br />
-        <input
-          class="upload-file"
-          type="file"
-          id="video-upload"
-          accept="video/*"
-        />
+    <div class="container">
+      <div class="change-ui">
+        <h2 class="change-image">Image</h2>
+        <h2 class="change-video">Video</h2>
       </div>
-      <div id="sep"></div>
-    </div>
-    <div class="convert-messages" id="messages">
-      Waiting for the video to be converted.
-    </div>
-    <div class="convert-text" id="converted-text">
-      Finished converted video to text will diplay here.
+      <div class="converter">
+        <!-- Image Conversion Section -->
+        <div class="convert-image">
+          <h2 class="convert-image-title title">Convert Image to Text</h2>
+          <div class="convert-image-root root" id="image-root">
+            <div class="upload-div upload">
+              <label class="upload-text text" for="image-upload"
+                >UPLOAD AN IMAGE:</label
+              >
+              <button id="autocorrect-button">Autocorrect Spelling</button>
+
+              <input
+                class="upload-file file"
+                type="file"
+                id="image-upload"
+                accept="image/*"
+              />
+            </div>
+          </div>
+          <div class="convert-text" id="image-converted-text">
+            <b>Converted text will display here.</b>
+          </div>
+          <div id="image-messages"></div>
+        </div>
+        <!-- Video Conversion Section -->
+        <div class="convert-video">
+          <h2 class="convert-video-title title">Convert Video to Text</h2>
+          <div class="convert-video-root root" id="video-root">
+            <div class="upload-div upload">
+              <label class="upload-text text" for="video-upload"
+                >UPLOAD A VIDEO:</label
+              >
+              <input
+                class="upload-file file"
+                type="file"
+                id="video-upload"
+                accept="video/*"
+              />
+            </div>
+          </div>
+          <div class="convert-messages" id="video-messages">
+            <b>Waiting for the video to be converted.</b>
+          </div>
+          <div class="convert-text" id="video-converted-text">
+            <b>Finished converted text will display here.</b>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
