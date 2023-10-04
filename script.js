@@ -45,8 +45,8 @@ $(document).ready(function () {
         const img = new Image();
 
         // Set the width and height of the image to match the video dimensions.
-        img.width = 640;
-        img.height = 360;
+        img.width = 500;
+        img.height = 250;
 
         img.src = objectURL;
         img.crossOrigin = "anonymous";
@@ -109,8 +109,8 @@ $(document).ready(function () {
     }
 
     const video = $("<video>")
-      .attr("width", 640)
-      .attr("height", 360)
+      .attr("width", 500)
+      .attr("height", 250)
       .attr("crossOrigin", "anonymous")
       .attr("autoplay", true);
 
