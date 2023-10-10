@@ -4,5 +4,5 @@ I created this multimodal text conversion using tesseract.js library and webkits
 
 ## Demo link:
 
-- tex-con-img-vc-vid-gce.netlify.app/
+- https://tex-con-img-vc-vid-gce.netlify.app/
   ![text conversion](./Capture.PNG)
