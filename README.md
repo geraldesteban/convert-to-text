@@ -1,7 +1,8 @@
-Text Conversion
+# Multimodal Text Conversion
 
-- Image to Text
-- Voice to Text (Can open specific websites "Limited only")
-- Video to Text
+I created this multimodal text conversion using tesseract.js library and webkitspeechrecognition api and framework jquery.You can use image, voice, and video to convert into text.
 
-I used tesseract.js and webkitspeechrecognition
+## Demo link:
+
+- tex-con-img-vc-vid-gce.netlify.app/
+  ![text conversion](./Capture.PNG)
