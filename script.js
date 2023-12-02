@@ -13,22 +13,37 @@ $(document).ready(function () {
   convertImage.show();
   convertVoice.hide();
 
+  // Function to update the background when a navigation item is clicked
+  const updateBackground = element => {
+    // Remove the background styling from all navigation items
+    $(".pStyle").removeClass("pointerClicked pointer pointerNotClick");
+
+    // Add the background styling to the clicked navigation item
+    element.addClass("pointerClicked pointer");
+
+    // Add pointerNotClick class to all other navigation items except the clicked one
+    $(".pStyle").not(element).addClass("pointerNotClick");
+  };
+
   changeImage.click(function () {
     convertImage.show();
     convertVideo.hide();
     convertVoice.hide();
+    updateBackground($(this)); // Pass the clicked element to the updateBackground function
   });
 
   changeVideo.click(function () {
     convertVideo.show();
     convertImage.hide();
     convertVoice.hide();
+    updateBackground($(this)); // Pass the clicked element to the updateBackground function
   });
 
   changeVoice.click(function () {
     convertVoice.show();
     convertImage.hide();
     convertVideo.hide();
+    updateBackground($(this)); // Pass the clicked element to the updateBackground function
   });
 });
 

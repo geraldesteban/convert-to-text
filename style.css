@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f4f8f9;
+}
+
+.bold {
+  font-weight: bold;
+}
+/* Change UI (IMAGE, VOICE, VIDEO */
+.change-ui {
+  margin: 2.5rem 0rem;
+  display: flex;
+  justify-content: center;
+}
+
+.pStyle {
+  color: gray;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  padding: 1.8rem;
+}
+
+.pointer {
+  color: #31d35c;
+  background: linear-gradient(to right, hsl(136, 65%, 51%), hsl(192, 70%, 51%));
+  background-size: 100% 5px, auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: all 0.5s ease-out;
+}
+
+.pointerNotClick {
+  color: gray;
+  background-size: 0 5px, auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: all 0.5s ease-out;
+}
+
+.pointerClicked {
+  color: #31d35c;
+  background: linear-gradient(to right, hsl(136, 65%, 51%), hsl(192, 70%, 51%));
+  background-size: 100% 5px, auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: all 0.5s ease-out;
+}
+
+.converter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem auto;
+  width: 55rem;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* Image and Video Style */
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.5rem 0rem;
+}
+
+.root {
+  width: 50rem;
+  height: 15rem;
+  margin: 0rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #5ec576;
+  border-radius: 5px;
+  background-color: rgba(135, 206, 235, 0.1);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.8rem;
+}
+
+.text {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.file {
+  border: 2px solid #5ec576;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.convert-messages {
+  width: 50rem;
+  height: 10rem;
+  margin: 0rem auto;
+  border: 2px solid #5ec576;
+  border-radius: 5px;
+  overflow: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.convert-text {
+  width: 50rem;
+  height: 10rem;
+  margin: 0rem auto;
+  border: 2px solid #5ec576;
+  border-radius: 5px;
+  overflow: auto;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Voice, Audio Style */
+.convert-btns {
+  margin: 1rem 0rem;
+  text-align: center;
+}
+
+.convert-btn {
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  border: 2px solid #5ec576;
+}
