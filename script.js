@@ -178,7 +178,6 @@ $(document).ready(function () {
 });
 
 /* Voice to Text Converter Functionality */
-
 $(document).ready(function () {
   let recognition;
 
@@ -192,9 +191,15 @@ $(document).ready(function () {
     // Set the recognition language (optional)
     recognition.lang = "en-US";
 
+    // Initialize transcript to an empty string
+    let transcript = "";
+
     // When speech recognition is successful, this event is triggered
     recognition.onresult = function (event) {
-      const transcript = event.results[0][0].transcript.toLowerCase();
+      // Append the new transcript to the existing one
+      transcript += event.results[0][0].transcript.toLowerCase();
+
+      // Update the transcript element
       transcriptElement.text("Voice text: " + transcript);
 
       // Check for specific keywords and perform actions
@@ -214,6 +219,14 @@ $(document).ready(function () {
       // Add more keywords and actions as needed
     };
 
+    // When the recognition stops, this event is triggered
+    recognition.onend = function () {
+      // Check if recognition should continue and restart it
+      if (!recognition.stoppedManually) {
+        recognition.start();
+      }
+    };
+
     // When an error occurs, this event is triggered
     recognition.onerror = function (event) {
       console.error("Speech recognition error:", event.error);
@@ -221,6 +234,9 @@ $(document).ready(function () {
 
     // Start listening when the "Start Listening" button is clicked
     startButton.on("click", function () {
+      // Reset the manual stopping flag and transcript
+      recognition.stoppedManually = false;
+      transcript = "";
       recognition.start();
       startButton.prop("disabled", true);
       stopButton.css("display", "inline-block");
@@ -228,6 +244,8 @@ $(document).ready(function () {
 
     // Stop listening when the "Stop Listening" button is clicked
     stopButton.on("click", function () {
+      // Set a flag to indicate manual stopping
+      recognition.stoppedManually = true;
       recognition.stop();
       startButton.prop("disabled", false);
       stopButton.css("display", "none");
