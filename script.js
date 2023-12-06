@@ -197,7 +197,7 @@ $(document).ready(function () {
     // When speech recognition is successful, this event is triggered
     recognition.onresult = function (event) {
       // Append the new transcript to the existing one
-      transcript += event.results[0][0].transcript.toLowerCase();
+      transcript += " " + event.results[0][0].transcript.toLowerCase();
 
       // Update the transcript element
       transcriptElement.text("Voice text: " + transcript);
