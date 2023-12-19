@@ -5,4 +5,4 @@ I created this multimodal text conversion using tesseract.js library and webkits
 ## Demo link:
 
 - https://multi-interaction-text-conversion.netlify.app/
-  ![text conversion](./interface.PNG)
+  ![text conversion](./interface.png)
